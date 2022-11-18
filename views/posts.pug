@@ -5,6 +5,7 @@ html(lang="ja")
     title NNチャット
   body
     h1 NNチャット
+    p #{user} さんがログイン中
     a(href="/logout") ログアウト
     form(method="post" action="/posts")
       div
@@ -14,9 +15,9 @@ html(lang="ja")
 
     h2 投稿一覧
     each post in posts
-      p #{post.postedBy}
+      p 投稿者: #{post.postedBy}
       p 送信日時: #{post.createdAt}
-      p #{post.content}
+      p!= post.content
       - let isDeletable = (user === post.postedBy || user === 'admin')
       if isDeletable
         form(method="post" action="/posts/delete")

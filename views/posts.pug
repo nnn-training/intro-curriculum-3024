@@ -16,7 +16,7 @@ html(lang="ja")
     each post in posts
       p #{post.postedBy}
       p 送信日時: #{post.createdAt}
-      p!= post.content.replace(/\n/g, '<br>')
+      p!= post.content
       - let isDeletable = (user === post.postedBy || user === 'admin')
       if isDeletable
         form(method="post" action="/posts/delete")

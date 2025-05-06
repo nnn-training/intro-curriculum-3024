@@ -14,8 +14,7 @@ html(lang="ja")
     h2 投稿一覧
     each post in posts
       p #{post.postedBy}
-      p 送信日時: #{post.createdAt}
-      p #{post.content}
+      p!=post.content
       - const isDeletable = (user === post.postedBy || user === 'admin')
       if isDeletable
         form(method="post" action="/posts/delete")
